@@ -12,9 +12,6 @@ export default function App() {
 
   const choiseAndReset = () => {
     clearTimeout(myVar);
-
-    console.log("hello");
-
     setText2(Text2 + Text);
     setText("");
     setCounter(0);
