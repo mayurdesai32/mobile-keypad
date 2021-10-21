@@ -27,221 +27,24 @@ export default function App() {
       setText(element.number);
       setLongpress(true);
       console.log(element.number);
-    }, 2000);
+    }, 1000);
   };
-  const clickHandler = (number) => {
+  const clickHandler = (element) => {
     clearTimeout(myVar);
     setCounter(counter + 1);
     if (longpress) {
-      null;
       console.log("longpress key");
     } else {
-      switch (number) {
-        // for 1
-
-        case 0:
-          if (counter >= 4) {
-            setCounter(1);
-            console.log("change");
-            setText(".");
-          } else {
-            if (counter % 4 === 0) {
-              setText(".");
-            } else if (counter % 3 === 0) {
-              setText("1");
-              // console.log("3");
-            } else if (counter % 2 === 0) {
-              setText("!");
-              // console.log("2");
-            } else if (counter % 1 === 0) {
-              setText(",");
-            }
-          }
-          // }
-          break;
-        // for 2
-        case 1:
-          setCounter(counter + 1);
-          if (counter >= 4) {
-            setCounter(1);
-            console.log("change");
-            setText("a");
-          } else {
-            if (counter % 4 === 0) {
-              setText("a");
-            } else if (counter % 3 === 0) {
-              setText("2");
-            } else if (counter % 2 === 0) {
-              setText("c");
-            } else if (counter % 1 === 0) {
-              setText("b");
-            }
-          }
-
-          break;
-
-        // for 3
-        case 2:
-          setCounter(counter + 1);
-          if (counter >= 4) {
-            setCounter(1);
-            console.log("change");
-            setText("d");
-          } else {
-            if (counter % 4 === 0) {
-              setText("d");
-            } else if (counter % 3 === 0) {
-              setText("3");
-            } else if (counter % 2 === 0) {
-              setText("f");
-            } else if (counter % 1 === 0) {
-              setText("e");
-            }
-          }
-          break;
-
-        // for 3
-        case 3:
-          setCounter(counter + 1);
-          if (counter >= 4) {
-            setCounter(1);
-            console.log("change");
-            setText("g");
-          } else {
-            if (counter % 4 === 0) {
-              setText("g");
-            } else if (counter % 3 === 0) {
-              setText("4");
-            } else if (counter % 2 === 0) {
-              setText("i");
-            } else if (counter % 1 === 0) {
-              setText("h");
-            }
-          }
-          break;
-
-        // for 5
-        case 4:
-          setCounter(counter + 1);
-          if (counter >= 4) {
-            setCounter(1);
-            console.log("change");
-            setText("j");
-          } else {
-            if (counter % 4 === 0) {
-              setText("j");
-            } else if (counter % 3 === 0) {
-              setText("5");
-            } else if (counter % 2 === 0) {
-              setText("l");
-            } else if (counter % 1 === 0) {
-              setText("k");
-            }
-          }
-          break;
-
-        // for 6
-
-        case 5:
-          setCounter(counter + 1);
-          if (counter >= 4) {
-            setCounter(1);
-            console.log("change");
-            setText("m");
-          } else {
-            if (counter % 4 === 0) {
-              setText("m");
-            } else if (counter % 3 === 0) {
-              setText("6");
-            } else if (counter % 2 === 0) {
-              setText("o");
-            } else if (counter % 1 === 0) {
-              setText("n");
-            }
-          }
-          break;
-
-        // for 7
-
-        case 6:
-          setCounter(counter + 1);
-          if (counter >= 5) {
-            setCounter(1);
-            console.log("change");
-            setText("p");
-          } else {
-            if (counter % 5 === 0) {
-              setText("p");
-            } else if (counter % 4 === 0) {
-              setText("7");
-            } else if (counter % 3 === 0) {
-              setText("s");
-            } else if (counter % 2 === 0) {
-              setText("r");
-            } else if (counter % 1 === 0) {
-              setText("q");
-            }
-          }
-          break;
-
-        // for 8
-        case 7:
-          setCounter(counter + 1);
-          if (counter >= 4) {
-            setCounter(1);
-            console.log("change");
-            setText("t");
-          } else {
-            if (counter % 4 === 0) {
-              setText("t");
-            } else if (counter % 3 === 0) {
-              setText("8");
-            } else if (counter % 2 === 0) {
-              setText("v");
-            } else if (counter % 1 === 0) {
-              setText("u");
-            }
-          }
-          break;
-        // for 9
-        case 8:
-          setCounter(counter + 1);
-          if (counter >= 5) {
-            setCounter(1);
-            console.log("change");
-            setText("w");
-          } else {
-            if (counter % 5 === 0) {
-              setText("w");
-            } else if (counter % 4 === 0) {
-              setText("9");
-            } else if (counter % 3 === 0) {
-              setText("z");
-            } else if (counter % 2 === 0) {
-              setText("y");
-            } else if (counter % 1 === 0) {
-              setText("x");
-            }
-          }
-          break;
-        // for *
-        case 9:
-          setText("*");
-
-          break;
-        // for0
-        case 10:
-          setText("0");
-
-          break;
-
-        case 11:
-          setText("#");
-
-          break;
-        // start
-        default:
-          return null;
+      if (counter >= element.letter.length + 1) {
+        setCounter(1);
+      } else {
+        if (counter >= element.letter.length) {
+          setText(element.number);
+          console.log("number");
+        } else {
+          setText(element.letter.charAt(counter));
+          console.log(element.letter.charAt(counter));
+        }
       }
     }
   };
@@ -260,7 +63,7 @@ export default function App() {
               onTouchStart={() => downHandler(element)}
               onTouchEnd={() => choiseAndReset()}
               onTouchCancel={() => choiseAndReset()}
-              onClick={() => clickHandler(index)}
+              onClick={() => clickHandler(element)}
               key={element.number}
               className="item"
             >
