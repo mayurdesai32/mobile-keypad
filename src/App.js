@@ -8,14 +8,9 @@ export default function App() {
   const [longpress, setLongpress] = useState(false);
   const [counter, setCounter] = useState(0);
 
-  // const [clicked, setClicked] = useState(false);
-  // let counter = 0;
-
   var myVar;
 
   const choiseAndReset = () => {
-    // counter = 0;
-
     clearTimeout(myVar);
 
     console.log("hello");
@@ -25,7 +20,6 @@ export default function App() {
     setCounter(0);
     setLongpress(false);
     console.log(longpress);
-    // return counter;
   };
 
   const downHandler = (element) => {
@@ -36,22 +30,16 @@ export default function App() {
     }, 2000);
   };
   const clickHandler = (number) => {
-    // console.log(number);
     clearTimeout(myVar);
     setCounter(counter + 1);
     if (longpress) {
       null;
-      console.log("myname");
+      console.log("longpress key");
     } else {
       switch (number) {
         // for 1
 
         case 0:
-          // console.log(counter);
-          // if (longpress) {
-          //   // setText("1");NULL
-          //   null;
-          // } else {
           if (counter >= 4) {
             setCounter(1);
             console.log("change");
@@ -269,7 +257,9 @@ export default function App() {
             <div
               onMouseLeave={() => choiseAndReset()}
               onMouseDown={() => downHandler(element)}
-              // {addEventListener('mouseleave', choiseAndReset)};
+              onTouchStart={() => downHandler(element)}
+              onTouchEnd={() => choiseAndReset()}
+              onTouchCancel={() => choiseAndReset()}
               onClick={() => clickHandler(index)}
               key={element.number}
               className="item"
